@@ -30,7 +30,6 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
 
 # PHP Extensões
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2 && \
-    docker-php-ext-configure pgsql --with-pgsql=/usr/local/pgsql && \
     pecl install xdebug && \
     docker-php-ext-install \
     gd \
@@ -42,9 +41,6 @@ RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/us
     zip \
     ftp \
     pdo && \
-    # pdo_mysql \
-    # pgsql \
-    # pdo_pgsql && \
     docker-php-ext-enable \
     xdebug \
     opcache
