@@ -1,5 +1,11 @@
 FROM php:7.3-fpm
 
+# Configs
+ENV PHP_TIME_ZONE=America/Sao_Paulo \
+    PHP_MEMORY_LIMIT=1024M \
+    PHP_UPLOAD_MAX_FILESIZE=64M \
+    PHP_POST_MAX_SIZE=64M
+
 # PHP Dependências
 RUN rm /etc/apt/preferences.d/no-debian-php && \
     apt-get update && \
@@ -20,12 +26,14 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
     libssl-dev \
     libmcrypt-dev \
     libxml2-dev \
+    libfbclient2 \
     php-soap \
     zlib1g-dev \
     libzip-dev \
     libicu-dev \
     unixodbc-dev \
     openssl \
+    firebird-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # PHP Extensões
