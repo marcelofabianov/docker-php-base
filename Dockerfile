@@ -61,3 +61,9 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 
 # Config PHP
 COPY ./php.ini /usr/local/etc/php/php.ini
+
+# Node.js
+RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install nodejs -y
+RUN npm install npm -g
