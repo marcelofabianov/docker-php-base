@@ -11,8 +11,12 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    curl \
+    autoconf \
+    autogen \
+    apt-utils \
+    build-essential \
     unzip \
+    software-properties-common \
     libaio1 \
     libaio-dev \
     libmemcached-dev \
@@ -61,9 +65,3 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 
 # Config PHP
 COPY ./php.ini /usr/local/etc/php/php.ini
-
-# Node.js
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install nodejs -y
-RUN npm install npm -g
