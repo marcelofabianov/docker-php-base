@@ -55,7 +55,7 @@ RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/us
     xdebug \
     opcache
 
-# Install / Config composer
+# Install / Composer
 ENV COMPOSER_HOME /composer
 ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 ENV COMPOSER_ALLOW_SUPERUSER 1

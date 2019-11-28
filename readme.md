@@ -1,3 +1,3 @@
 # Docker PHP
 
-Imagem base para se trabalhar com PHP
+Imagem PHP Base para se extender em outras imagens / projetos.
