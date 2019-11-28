@@ -1,10 +1,8 @@
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
-# Configs
-ENV PHP_TIME_ZONE=America/Sao_Paulo \
-    PHP_MEMORY_LIMIT=1024M \
-    PHP_UPLOAD_MAX_FILESIZE=64M \
-    PHP_POST_MAX_SIZE=64M
+# Timezone
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # PHP Dependências
 RUN rm /etc/apt/preferences.d/no-debian-php && \
