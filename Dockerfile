@@ -14,6 +14,8 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
     apt-utils \
     build-essential \
     unzip \
+    curl \
+    wget \
     software-properties-common \
     libaio1 \
     libaio-dev \
@@ -39,7 +41,7 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
     && rm -rf /var/lib/apt/lists/*
 
 # PHP Extensões
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2 && \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     pecl install xdebug && \
     docker-php-ext-install \
     gd \
@@ -65,6 +67,9 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 RUN curl -LO https://deployer.org/deployer.phar
 RUN mv deployer.phar /usr/local/bin/dep
 RUN chmod +x /usr/local/bin/dep
+
+# Install / Symfony Binary
+RUN curl -sS https://get.symfony.com/cli/installer | bash
 
 # Config PHP
 COPY ./php.ini /usr/local/etc/php/php.ini
